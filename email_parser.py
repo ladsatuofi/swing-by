@@ -2,25 +2,24 @@ from PIL import Image
 import cv2 as cv
 from pytesseract import image_to_string
 import datefinder
+class email_parser():
+    def main(self ):
+        extracted_text = image_parser()
+        image = Image.open('/Users/stevenli/PycharmProjects/swing-by')
+        extract_dates(extracted_text)
 
-def image_parser(self):
-
-    image = Image.open('/Users/stevenli/PycharmProjects/swing-by')
-    text = image_to_string(image)
+    def image_parser(some_image):
+        image = Image.open('/Users/stevenli/PycharmProjects/swing-by')
+        text = image_to_string(image)
+        return text
 
     # parse dates
-    def date_extraction(copy_of_text):
-        copy_of_text = text
-        matches = date_extraction(copy_of_text)
+    def extract_dates(text):
+        matches = list(extract_dates(text))
         for match in matches:
             print(match)
 
     # parse times
-    def time_extraction(copy_of_text):
-        copy_of_text = text
+    def time_extraction(text):
 
-    # parse potential categories
-    def keyword_tokens:
-
-    # check that the categories are similar to what the user has tagged it
-    def keyword_match_relevance:
+    main()
