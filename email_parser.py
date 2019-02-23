@@ -1,21 +1,26 @@
 from PIL import Image
+import cv2 as cv
 from pytesseract import image_to_string
+import datefinder
 
-def image_parser(image):
+def image_parser(self):
 
-    image = Image.open('filedirectory')
+    image = Image.open('/Users/stevenli/PycharmProjects/swing-by')
     text = image_to_string(image)
-    print(text)
 
+    # parse dates
+    def date_extraction(copy_of_text):
+        copy_of_text = text
+        matches = date_extraction(copy_of_text)
+        for match in matches:
+            print(match)
 
-# get the entire email format from HTML (including title, body, sender, receiver)
+    # parse times
+    def time_extraction(copy_of_text):
+        copy_of_text = text
 
-# check that the place forwarded is actually from an @illinois.edu email
+    # parse potential categories
+    def keyword_tokens:
 
-# parse dates
-
-# parse times
-
-# parse potential categories
-
-# check that the categories are similar to what the user has tagged it
+    # check that the categories are similar to what the user has tagged it
+    def keyword_match_relevance:
