@@ -1,4 +1,5 @@
 import cv2 as cv
+
 def image_verification(image):
 
     # read in the image
@@ -12,4 +13,6 @@ def image_verification(image):
     # display the image that has had noise removed
     cv.imshow('result', blur)
     cv.waitkey(0)
+
+    
 
