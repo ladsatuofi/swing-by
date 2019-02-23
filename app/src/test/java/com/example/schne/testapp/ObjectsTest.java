@@ -3,7 +3,9 @@ package com.example.schne.testapp;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class ObjectsTest {
 
@@ -30,6 +32,15 @@ public class ObjectsTest {
         assertEquals(0, creator.getPosts().get(0).getCredibility());
         assertEquals(0, userPost.getAuthor().getCredibility());
         assertEquals(0, creator.getCredibility());
+    }
+
+    @Test
+    public void equalPlayersTest() {
+        User secondUser = new User(1, "User2");
+        User thirdUser = new User(0, "User3");
+        assertFalse(creator.equals(secondUser));
+        assertFalse(creator.equals(thirdUser));
+        assertTrue(creator.equals(creator));
     }
 
 

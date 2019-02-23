@@ -73,5 +73,30 @@ public class User {
     }
 
 
+    @Override
+    public int hashCode() {
+        Integer idAsInt = (Integer) id;
+        return idAsInt.hashCode() + username.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+
+        if (other instanceof User) {
+            User secondUser = (User) other;
+            if (getId() == secondUser.getId() && getUsername().equals(secondUser.getUsername())) {
+                return true;
+            }
+
+            return false;
+        }
+
+        return false;
+    }
+
+
 
 }
