@@ -14,7 +14,7 @@ public class ObjectsTest {
 
     @Before
     public void setUpUser() {
-        creator = new User(0, "user");
+        creator = new User("user", "testemail@illinois.edu");
         userPost = creator.createPost();
     }
 
@@ -36,8 +36,8 @@ public class ObjectsTest {
 
     @Test
     public void equalPlayersTest() {
-        User secondUser = new User(1, "User2");
-        User thirdUser = new User(0, "User3");
+        User secondUser = new User("user2", "testemail2@illinois.edu");
+        User thirdUser = new User("user", "testemail3@illinois.edu");
         assertFalse(creator.equals(secondUser));
         assertFalse(creator.equals(thirdUser));
         assertTrue(creator.equals(creator));
