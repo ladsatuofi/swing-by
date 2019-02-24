@@ -27,13 +27,14 @@ image = cv.imread('clear.png')
 # applying Gaussian blur to the image to remove noise
 gray_image = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
 blur = cv.GaussianBlur(gray_image, (5, 5), 0)
+res = cv.resize(blur, None, fx=3, fy=3, interpolation=cv.INTER_CUBIC)
 
 # display the image that has had noise removed
-text = ocr.image_to_string(blur)
+text = ocr.image_to_string(res)
 
 # extract info from ocr
-ep.date_extraction(text)
-ep.location_extraction(text)
+print(ep.date_extraction(text))
+print(ep.location_extraction(text))
 
 
 def remove_non_ascii(s): return "".join(i for i in s if ord(i) < 128)
@@ -137,6 +138,5 @@ text = remove_non_ascii(text)
 text = sanitize_input(text)
 sentence_tokens, word_tokens = tokenize_content(text)
 sentence_ranks = score_tokens(word_tokens, sentence_tokens)
-summary = summarize(sentence_ranks, sentence_tokens, 2)
-
+summary = summarize(sentence_ranks, sentence_tokens, len(sentence_tokens) // 3)
 print(summary)

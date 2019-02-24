@@ -9,4 +9,5 @@ datefinder
 location-extractor
 nltk
 symspellpy
+BeautifulSoup4
 #
