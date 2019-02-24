@@ -2,26 +2,17 @@ from PIL import Image
 import cv2 as cv
 from pytesseract import image_to_string
 import datefinder
-class email_parser():
-    def main(self ):
-        extracted_text = image_parser()
-        image = Image.open('/Users/stevenli/PycharmProjects/swing-by')
-        extract_dates(extracted_text)
-
-    def image_parser(some_image):
-        image = Image.open('/Users/stevenli/PycharmProjects/swing-by')
-        text = image_to_string(image)
-        return text
-
-    # parse dates
-    def extract_dates(text):
-        matches = list(extract_dates(text))
-        for match in matches:
-            print(match)
-
-    # parse times
-    def time_extraction(text):
-
-    main()
+import location_extractor as loc
 
 
+# parse dates
+def date_extraction(copy_of_text):
+    matches = datefinder.find_dates(copy_of_text)
+    for match in matches:
+        print(match)
+
+
+def location_extraction(text):
+    matches = loc.extract_locations_from_text(text)
+    for match in matches:
+        print(match)

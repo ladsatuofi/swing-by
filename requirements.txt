@@ -1,0 +1,12 @@
+#
+####### requirements.txt #######
+#
+###### Requirements without Version Specifiers ######
+opencv-python
+pillow
+pytesseract
+datefinder
+location-extractor
+nltk
+symspellpy
+#
