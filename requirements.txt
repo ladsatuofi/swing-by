@@ -10,4 +10,5 @@ location-extractor
 nltk
 symspellpy
 BeautifulSoup4
+requests
 #

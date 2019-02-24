@@ -1,24 +1,25 @@
 # coding: utf-8
 
+import argparse
 import os
+import re
+from collections import defaultdict
+from heapq import nlargest
+from string import punctuation
+
 import cv2 as cv
 import pytesseract as ocr
-import email_parser as ep
-import argparse
-
-from nltk.tokenize import sent_tokenize, word_tokenize
-
+import requests
 from nltk.corpus import stopwords
-stopwords.words('english')
-from string import punctuation
 from nltk.probability import FreqDist
-from heapq import nlargest
-from collections import defaultdict
+from nltk.tokenize import sent_tokenize, word_tokenize
 from symspellpy.symspellpy import SymSpell
+
+import email_parser as ep
 
 # make runnable from command line
 ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--parse", help = "retrieve dates from image")
+ap.add_argument("-p", "--parse", help="retrieve dates from image")
 args = vars(ap.parse_args())
 
 # read in the image
@@ -33,8 +34,10 @@ res = cv.resize(blur, None, fx=3, fy=3, interpolation=cv.INTER_CUBIC)
 text = ocr.image_to_string(res)
 
 # extract info from ocr
-print(ep.date_extraction(text))
-print(ep.location_extraction(text))
+date_time = ep.date_extraction(text)
+if not date_time[0] < date_time[1] and not date_time[0] > date_time[1]:
+    date_time = date_time[0]
+location = ep.location_extraction(text)
 
 
 def remove_non_ascii(s): return "".join(i for i in s if ord(i) < 128)
@@ -101,9 +104,14 @@ def summarize(ranks, sentences, length):
         print("Error, more sentences requested than available. Use --l (--length) flag to adjust.")
         exit()
 
-    indexes = nlargest(length, ranks, key = ranks.get)
+    indexes = nlargest(length, ranks, key=ranks.get)
     final_sentences = [sentences[j] for j in sorted(indexes)]
     return ' '.join(final_sentences)
+
+
+def get_title(filtered_words):
+    word_freq = FreqDist(filtered_words)
+    return word_freq.max()
 
 
 def spell_check(text):
@@ -139,4 +147,9 @@ text = sanitize_input(text)
 sentence_tokens, word_tokens = tokenize_content(text)
 sentence_ranks = score_tokens(word_tokens, sentence_tokens)
 summary = summarize(sentence_ranks, sentence_tokens, len(sentence_tokens) // 3)
-print(summary)
+title = get_title(word_tokens)
+r = requests.post("https://swing-by-server.localtunnel.me/v1/events", json = {"time": date_time[0].isoformat(),
+                                                                              'location': location[0],
+                                                                              'description': summary,
+                                                                              'name': title
+                                                                              })
