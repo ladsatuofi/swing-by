@@ -1,24 +1,24 @@
 # coding: utf-8
+
 import os
 import cv2 as cv
 import pytesseract as ocr
 import email_parser as ep
 import argparse
+
 from nltk.tokenize import sent_tokenize, word_tokenize
+
 from nltk.corpus import stopwords
+stopwords.words('english')
 from string import punctuation
 from nltk.probability import FreqDist
 from heapq import nlargest
 from collections import defaultdict
 from symspellpy.symspellpy import SymSpell
-import re
-
-# specify tesseract path
-ocr.pytesseract.tesseract_cmd = r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe"
 
 # make runnable from command line
 ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--parse", help="retrieve dates from image")
+ap.add_argument("-p", "--parse", help = "retrieve dates from image")
 args = vars(ap.parse_args())
 
 # read in the image
@@ -36,7 +36,7 @@ ep.date_extraction(text)
 ep.location_extraction(text)
 
 
-def remove_non_ascii(s): return "".join(i for i in s if ord(i)<128)
+def remove_non_ascii(s): return "".join(i for i in s if ord(i) < 128)
 
 
 def insert_periods(text):
@@ -73,12 +73,12 @@ def tokenize_content(content):
     ]
 
 
-def score_tokens(filterd_words, sentence_tokens):
+def score_tokens(filtered_words, sentence_tokens):
     """
     Builds a frequency map based on the filtered list of words and
     uses this to produce a map of each sentence and its total score
     """
-    word_freq = FreqDist(filterd_words)
+    word_freq = FreqDist(filtered_words)
 
     ranking = defaultdict(int)
 
@@ -100,7 +100,7 @@ def summarize(ranks, sentences, length):
         print("Error, more sentences requested than available. Use --l (--length) flag to adjust.")
         exit()
 
-    indexes = nlargest(length, ranks, key=ranks.get)
+    indexes = nlargest(length, ranks, key = ranks.get)
     final_sentences = [sentences[j] for j in sorted(indexes)]
     return ' '.join(final_sentences)
 
@@ -131,6 +131,7 @@ def spell_check(text):
 
 
 text = remove_non_ascii(text)
+
 # text = spell_check(text)
 # text = insert_periods(text)
 text = sanitize_input(text)
