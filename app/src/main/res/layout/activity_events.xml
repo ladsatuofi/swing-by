@@ -1,32 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f4ece9">
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
 
     <Button
         android:id="@+id/settingsButton"
-        android:layout_width="70dp"
-        android:layout_height="64dp"
+        android:layout_width="71dp"
+        android:layout_height="79dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="341dp"
-        android:background="@drawable/greySettingsButton" />
-
-    <Button
-        android:id="@+id/postButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="294dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/PostButton" />
+        android:layout_marginEnd="313dp"
+        android:background="@drawable/grey_settings_button" />
 
     <RelativeLayout
         android:id="@+id/header"
@@ -39,8 +28,23 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/Header"/>
+            android:src="@drawable/header" />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/postButton"
+        android:layout_width="82dp"
+        android:layout_height="93dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="459dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="addItems"
+        android:background="@drawable/post_button" />
 
     <ScrollView
         android:id="@+id/scroll_view"
@@ -48,29 +52,20 @@
         android:layout_height="fill_parent"
         android:layout_below="@+id/header"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/myLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#f4ece9"
-            android:fillViewport="true"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/bodytext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="#F44336"
-                android:textSize="25sp" />
-
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+            <ListView
+                android:id="@android:id/list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:drawSelectorOnTop="false" />
         </LinearLayout>
     </ScrollView>
 

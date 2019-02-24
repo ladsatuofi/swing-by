@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="71dp"
+        android:layout_height="79dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="313dp"
+        android:background="@drawable/grey_settings_button" />
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:background="#ff4500"
+        android:gravity="center"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/header" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/titleCreateField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="127dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="394dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/descriptionCreateField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/titleCreateField"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="189dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Description" />
+
+    <TextView
+        android:id="@+id/eventInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/titleCreateField"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="98dp"
+        android:text="Enter your event's information" />
+
+    <EditText
+        android:id="@+id/locationCreateField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/descriptionCreateField"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="249dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Location" />
+
+    <EditText
+        android:id="@+id/timeCreateField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/locationCreateField"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="209dp"
+        android:ems="10"
+        android:inputType="time"
+        android:text="Time" />
+
+    <EditText
+        android:id="@+id/dateCreateField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/eventInfoText"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-19dp"
+        android:layout_marginBottom="151dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Date" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="46dp"
+        android:layout_alignStart="@+id/dateCreateField"
+        android:layout_alignTop="@+id/header"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="473dp"
+        android:layout_marginEnd="209dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/orange_button"
+        android:text="Create" />
+</RelativeLayout>
