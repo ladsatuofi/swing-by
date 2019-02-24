@@ -1,4 +1,4 @@
-# Swing-By: A ML community trust framework for intelligent event suggestion.
+# Swing-By: A ML community-based trust framework for intelligent event suggestion.
 ## Inspiration
 As a group of Computer Science, Math, and Statistics majors, we have all have friends from different majors come to us asking about CS events on campus (that we’ve been sent by the CS Department). One thing that we agreed on was that events on campus are far from being consolidated enough into one platform.
 
