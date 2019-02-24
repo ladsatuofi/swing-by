@@ -6,7 +6,12 @@ import java.util.List;
 public class User {
 
     private String username;
+    private String email;
+
+    //id might be obsolete, do not use
     private int id;
+
+
     private int credibility = 0;
     private List<Post> posts = new ArrayList<>();
 
@@ -22,13 +27,31 @@ public class User {
         return posts;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Verifies that the email contains '@illinois.edu'
+     * @return true if the email is found to be valid
+     */
+    public boolean verifyEmail() {
+        for (int i = 0; i < email.length(); i++) {
+            if (email.substring(i).equals("@illinois.edu")) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public int getId() {
         return id;
     }
 
-    User(int newId, String newUsername) {
-        id = newId;
+    User(String newUsername, String newEmail) {
         username = newUsername;
+        email = newEmail;
     }
 
     public void setCredibilityByPosts() {
@@ -87,7 +110,7 @@ public class User {
 
         if (other instanceof User) {
             User secondUser = (User) other;
-            if (getId() == secondUser.getId() && getUsername().equals(secondUser.getUsername())) {
+            if (getEmail().equals(secondUser.getEmail()) && getUsername().equals(secondUser.getUsername())) {
                 return true;
             }
 
