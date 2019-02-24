@@ -22,14 +22,13 @@ ap.add_argument("-p", "--parse", help="retrieve dates from image")
 args = vars(ap.parse_args())
 
 # read in the image
-image = cv.imread('filename.png')
+image = cv.imread('clear.png')
 
 # applying Gaussian blur to the image to remove noise
 gray_image = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
 blur = cv.GaussianBlur(gray_image, (5, 5), 0)
 
 # display the image that has had noise removed
-cv.imshow('result', blur)
 text = ocr.image_to_string(blur)
 
 # extract info from ocr
@@ -133,10 +132,10 @@ def spell_check(text):
 
 text = remove_non_ascii(text)
 # text = spell_check(text)
-text = insert_periods(text)
+# text = insert_periods(text)
 text = sanitize_input(text)
 sentence_tokens, word_tokens = tokenize_content(text)
 sentence_ranks = score_tokens(word_tokens, sentence_tokens)
-summary = summarize(sentence_ranks, sentence_tokens, 1)
+summary = summarize(sentence_ranks, sentence_tokens, 2)
 
-# print(summary)
+print(summary)
