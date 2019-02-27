@@ -80,3 +80,15 @@ def event_states(submitted_event):
     elif event_correct(submitted_event):
         live_events.append(submitted_event)
 
+def user_point_counter(user, action):
+    total_points = 0
+    if user_logged_in_at_least_once_in_day:
+        total_points += 1
+    if user.action is correct_user_response and response_is_prompt:
+        total_points += points_deserved_if_correct
+    elif user.action is correct_user_response and not response_is_prompt:
+        total_points += 0.5 * points_deserved_if_correct
+    elif user.action is not correct_user_response:
+        total_points -= 3 * user.points_deserved_if_correct
+    else:
+        total_points += 0
