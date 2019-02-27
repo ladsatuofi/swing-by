@@ -28,3 +28,10 @@ def voting_weightage(submitted_event):
             submitted_event.num_upvotes += 2
     return submitted_event.num_upvotes
 
+def whether_push_live(event):
+    total_potential_points = 0
+    for users in users_who_viewed_event:
+        total_potential_points += users.voting_weightage
+        if total_potential_points > 1000 and event.upvotes > 500:
+            event.push_live()
+
