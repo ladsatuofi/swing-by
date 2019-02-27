@@ -44,3 +44,31 @@ def points_deserved_if_correct(submitted_event, contributor):
         points_deserved = pow(0.99, contributor.contribution_number(submitted_event))
     return points_deserved
 
+def contribution_number(submitted_event):
+    interaction_place = submitted_event.num_upvotes + submitted_event.num_downvotes + 1
+    return interaction_place
+
+def response_is_prompt(response_time, event):
+    if response_time < event.time:
+        return True
+    else:
+        return False
+
+def correct_user_response(user_response, submitted_event):
+    if event_correct(submitted_event) and user_response is upvote:
+        return True
+    else:
+        return False
+
+def event_correct(submitted_event):
+    if submitted_event in finally_viewable_event:
+        return True
+    else:
+        return False
+
+def clearly_incorrect_event(submitted_event):
+    if submitted_event.num_downvotes - submitted_event.num_upvotes > 20:
+        return True
+    else:
+        return False
+
