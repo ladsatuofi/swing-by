@@ -2,19 +2,6 @@
 import numpy as np
 from math import pow
 
-def user_point_counter(user, action):
-    total_points = 0
-    if user_logged_in_at_least_once_in_day:
-        total_points += 1
-    if user.action is correct_user_response and response_is_prompt:
-        total_points += points_deserved_if_correct
-    elif user.action is correct_user_response and not response_is_prompt:
-        total_points += 0.5 * points_deserved_if_correct
-    elif user.action is not correct_user_response:
-        total_points -= 3 * user.points_deserved_if_correct
-    else:
-        total_points += 0
-
 def segregate_student_credibility():
     # have a list of users and their points stored in string format
     list_of_users = list(** ** ** ** read from our database)
@@ -40,56 +27,4 @@ def voting_weightage(submitted_event):
         else:
             submitted_event.num_upvotes += 2
     return submitted_event.num_upvotes
-
-def whether_push_live(event):
-    total_potential_points = 0
-    for users in users_who_viewed_event:
-        total_potential_points += users.voting_weightage
-        if total_potential_points > 1000 and event.upvotes > 500:
-            event.push_live()
-
-def points_deserved_if_correct(submitted_event, contributor):
-    if event_correct(submitted_event) and contributor is a poster:
-        contributor.num_points += (submitted_event.num_upvotes - submitted_event.num_downvotes)
-        points_deserved = (submitted_event.num_upvotes - submitted_event.num_downvotes)
-    if contributor is correct_user_response and contributor is an endorser:
-        contributor.num_points += pow(0.99, contributor.contribution_number(submitted_event))
-        points_deserved = pow(0.99, contributor.contribution_number(submitted_event))
-    return points_deserved
-
-def contribution_number(submitted_event):
-    interaction_place = submitted_event.num_upvotes + submitted_event.num_downvotes + 1
-    return interaction_place
-
-def response_is_prompt(response_time, event):
-    if response_time < event.time:
-        return True
-    else:
-        return False
-
-def correct_user_response(user_response, submitted_event):
-    if event_correct(submitted_event) and user_response is upvote:
-        return True
-    else:
-        return False
-
-def event_correct(submitted_event):
-    if submitted_event is in finally_viewable_event:
-        return True
-    else:
-        return False
-
-def clearly_incorrect_event(submitted_event):
-    if submitted_event.num_downvotes - submitted_event.num_upvotes > 20:
-        return True
-    else:
-        return False
-
-def event_states(submitted_event):
-    clearly_incorrect_event_list = list()
-    live_events = list()
-    if submitted_event is clearly_incorrect_event(submitted_event):
-        clearly_incorrect_event_list.append(submitted_event)
-    elif submitted_event is event_correct(submitted_event):
-        list.append(submitted_event)
 
