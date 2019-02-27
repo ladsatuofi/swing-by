@@ -72,3 +72,11 @@ def clearly_incorrect_event(submitted_event):
     else:
         return False
 
+def event_states(submitted_event):
+    clearly_incorrect_event_list = list()
+    live_events = list()
+    if clearly_incorrect_event(submitted_event):
+        clearly_incorrect_event_list.append(submitted_event)
+    elif event_correct(submitted_event):
+        live_events.append(submitted_event)
+
