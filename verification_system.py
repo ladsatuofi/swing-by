@@ -35,3 +35,12 @@ def whether_push_live(event):
         if total_potential_points > 1000 and event.upvotes > 500:
             event.push_live()
 
+def points_deserved_if_correct(submitted_event, contributor):
+    if event_correct(submitted_event) and contributor is in submitted_event.posters:
+        contributor.num_points += (submitted_event.num_upvotes - submitted_event.num_downvotes)
+        points_deserved = (submitted_event.num_upvotes - submitted_event.num_downvotes)
+    if contributor is correct_user_response and contributor is in submitted_event.endorsers:
+        contributor.num_points += pow(0.99, contributor.contribution_number(submitted_event))
+        points_deserved = pow(0.99, contributor.contribution_number(submitted_event))
+    return points_deserved
+
