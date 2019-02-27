@@ -149,7 +149,11 @@ sentence_ranks = score_tokens(word_tokens, sentence_tokens)
 summary = summarize(sentence_ranks, sentence_tokens, len(sentence_tokens) // 3)
 title = get_title(word_tokens)
 r = requests.post("https://swing-by-server.localtunnel.me/v1/events", json = {"time": date_time[0].isoformat(),
+                                                                              "timeStr": date_time[0].__format__('%c'),
                                                                               'location': location[0],
                                                                               'description': summary,
-                                                                              'name': title
+                                                                              'name': title,
+                                                                              'duration': (date_time[1] - date_time[0]).total_seconds() // 3600
                                                                               })
+# print(r.status_code)
+# print(requests.get("https://swing-by-server.localtunnel.me/v1/events").content)
